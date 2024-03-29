@@ -26,36 +26,38 @@ export default async function Color({ params }) {
   const tailwindCode = getTailwindCode(shades)
 
   return (
-	  <section className="min-h-screen pt-12 justify-center flex flex-col">
-        <h2 className="drop-shadow-md text-xl mb-2">Your colour</h2>
-        <div className="w-full flex flex-row gap-2 mb-6">
+	  <section className="min-h-screen py-12 md:py-0 justify-center flex flex-col">
+      <div className="flex md:flex-col gap-2">
+        <h2 className="hidden md:block drop-shadow-md text-xl mb-2">Your colour</h2>
+        <div className="w-full flex flex-col md:flex-row gap-2 md:mb-6">
             {shades[0].map(color => <ColorButton key={color} color={color}/>)}
         </div>
 
-        <h2 className="drop-shadow-md text-xl mb-4">Suggested colours for your palette</h2>
-        <div className="w-full flex flex-row gap-2 mb-4">
+        <h2 className="hidden md:block drop-shadow-md text-xl mb-4">Suggested colours for your palette</h2>
+        <div className="w-full flex flex-col md:flex-row gap-2 md:mb-4">
             {shades[1].map(color => <ColorButton key={color} color={color}/>)}
         </div>
         
-        <div className="w-full flex flex-row gap-2">
+        <div className="w-full flex flex-col md:flex-row gap-2">
             {shades[2].map(color => <ColorButton key={color} color={color}/>)}
         </div>
+      </div>
 
-        <div className="flex gap-2 mt-6 mt-12">
-          <code className="rounded-md whitespace-pre text-sm text-slate-400 w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{cssCode}</code>
-          <code className="rounded-md whitespace-pre text-sm text-slate-400 w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{tailwindCode}</code>
-        </div>
-        
-        <div className="flex items-center mt-6 justify-between w-full">
-          <a 
-              href="/"
-              className="drop-shadow-md min-w-40 inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
-          >Pick another color</a>
-          <button
-              href="/"
-              className="drop-shadow-md min-w-40 inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
-          >Try again</button>
-        </div>
+      <div className="flex flex-col md:flex-row gap-2 mt-6 mt-12">
+        <code className="rounded-md whitespace-pre text-sm text-slate-400 w-full md:w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{cssCode}</code>
+        <code className="rounded-md whitespace-pre text-sm text-slate-400 w-full md:w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{tailwindCode}</code>
+      </div>
+      
+      <div className="flex order-first md:order-last items-center mb-4 md:mt-6 justify-between w-full">
+        <a 
+            href="/"
+            className="drop-shadow-md min-w-40 inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
+        >Pick another color</a>
+        <button
+            href="/"
+            className="drop-shadow-md min-w-40 inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"
+        >Try again</button>
+      </div>
     </section>
   )
 }
