@@ -1,6 +1,4 @@
 import { ColorButton } from "@/components/ColorButton";
-import { Form } from "@/components/Form";
-import { getColorData } from "@/services/main";
 import { getColorShades, getCssCode, getSuggestedColors, getTailwindCode, hexToRgb, hslToRgb, rgbToHex, rgbToHsl } from "@/utils/css";
 
 export default async function Color({ params }) {
@@ -9,7 +7,7 @@ export default async function Color({ params }) {
   const colors = [
     hexToRgb(`#${color}`),
     getSuggestedColors(hexToRgb(`#${color}`)),
-    getSuggestedColors(hexToRgb(`#${color}`))
+    getSuggestedColors(getSuggestedColors(hexToRgb(`#${color}`)))
   ]
 
   const shades = [
@@ -26,17 +24,17 @@ export default async function Color({ params }) {
 
   return (
 	  <section className="min-h-screen pt-12 justify-center flex flex-col">
-        <h2 className="text-xl mb-2">Your colour</h2>
-        <div className="w-full flex flex-row gap-2 mb-12">
+        <h2 className="drop-shadow-md text-xl mb-2">Your colour</h2>
+        <div className="w-full flex flex-row gap-2 mb-6">
             {shades[0].map(color => <ColorButton key={color} color={color}/>)}
         </div>
 
-        <h2 className="text-xl mb-4">Suggested colours for your palette</h2>
-        <div className="w-full flex flex-row gap-2 mb-12">
+        <h2 className="drop-shadow-md text-xl mb-4">Suggested colours for your palette</h2>
+        <div className="w-full flex flex-row gap-2 mb-4">
             {shades[1].map(color => <ColorButton key={color} color={color}/>)}
         </div>
         
-        <div className="w-full flex flex-row gap-2 mb-12">
+        <div className="w-full flex flex-row gap-2">
             {shades[2].map(color => <ColorButton key={color} color={color}/>)}
         </div>
 
@@ -45,7 +43,7 @@ export default async function Color({ params }) {
           <code className="rounded-md whitespace-pre text-sm text-slate-400 w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{tailwindCode}</code>
         </div> */}
         
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center mt-12 justify-between w-full">
           <a 
               href="/"
               className="drop-shadow-md min-w-40 inline-flex h-12 items-center justify-center rounded-md bg-neutral-950 px-6 font-medium text-neutral-50 shadow-lg shadow-neutral-500/20 transition active:scale-95"

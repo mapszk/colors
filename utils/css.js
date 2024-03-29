@@ -118,50 +118,8 @@ export const getSuggestedColors = (rgb) => {
 
 export const getColorShades = (rgb) => {
   const [h, s, l] = rgbToHsl(rgb[0], rgb[1], rgb[2])
-  let shades = Array.from({length: 5}, () => null)
-
-  if (l > 75) {
-    shades = [
-      [h, s, l - 60],
-      [h, s, l - 45],
-      [h, s, l - 30],
-      [h, s, l - 15],
-      [h, s, l],
-    ]
-  } else if (l > 50) {
-    shades = [
-      [h, s, l - 45],
-      [h, s, l - 30],
-      [h, s, l - 15],
-      [h, s, l],
-      [h, s, l + 15],
-    ]
-  } else if (l > 25) {
-    shades = [
-      [h, s, l - 30],
-      [h, s, l - 15],
-      [h, s, l],
-      [h, s, l + 15],
-      [h, s, l + 30],
-    ]
-  } else if (l > 0) {
-    shades = [
-      [h, s, l - 15],
-      [h, s, l],
-      [h, s, l + 15],
-      [h, s, l + 30],
-      [h, s, l + 45],
-    ]
-  } else {
-    shades = [
-      [h, s, l],
-      [h, s, l + 15],
-      [h, s, l + 30],
-      [h, s, l + 45],
-      [h, s, l + 60],
-    ]
-  }
-  return shades
+  let shades = Array.from({length: 11}, () => null)
+  return shades.map((val, i) => ([h, s, Math.min((l % 10) + 10 * i, 100)]))
 }
 
 
