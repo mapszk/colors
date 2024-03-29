@@ -44,8 +44,8 @@ export default async function Color({ params }) {
       </div>
 
       <div className="flex flex-col md:flex-row gap-2 mt-6 mt-12">
-        <code className="rounded-md whitespace-pre text-sm text-slate-400 w-full md:w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{cssCode}</code>
-        <code className="rounded-md whitespace-pre text-sm text-slate-400 w-full md:w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-slate-800">{tailwindCode}</code>
+        <code className="rounded-md whitespace-pre text-sm text-gray-400 w-full md:w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-neutral-950">{cssCode}</code>
+        <code className="rounded-md whitespace-pre text-sm text-gray-400 w-full md:w-1/2 min-h-12 max-h-64 overflow-y-scroll p-4 bg-neutral-950">{tailwindCode}</code>
       </div>
       
       <div className="flex order-first md:order-last items-center mb-4 md:mt-6 justify-between w-full">
